@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import SlidingMenu from '../SlidingMenu';
+import SlidingMenu from 'component/ui/SlidingMenu';
 import HamburgerMenu from 'react-hamburger-menu';
-import { logoSize } from '../../../images';
-import { HEADER_HEIGHT, SPACING } from '../../../styles/constants';
+import { logoSize } from 'images';
+import { HEADER_HEIGHT, SPACING } from 'styles/constants';
 
 const styles = {
   header:{

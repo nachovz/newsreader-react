@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const styles = {
   flyoutMenu: {
@@ -34,7 +35,7 @@ export default function({opened, handleMouseDown}){
     <div
       onMouseDown={handleMouseDown} 
       style={{...styles.flyoutMenu, ...opened ? styles.show : styles.hide} }>
-      <h2><a style={styles.links} href="https://www.elnacional.com">Home</a></h2>
+      <h2><Link to="/" style={styles.links}>Home</Link></h2>
       <h2><a style={styles.links} href="https://www.elnacional.com">About</a></h2>
       <h2><a style={styles.links} href="https://www.elnacional.com">Contact</a></h2>
       <h2><a style={styles.links} href="https://www.elnacional.com">Search</a></h2>  

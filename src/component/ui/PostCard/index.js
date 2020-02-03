@@ -1,4 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import urlCleaner from 'utils/urlCleaner';
+import getBestImage from 'utils/getBestImage';
 
 const styles = {
   imagesContainer:{
@@ -8,11 +11,12 @@ const styles = {
     padding: 8
   },
   post_title:{
-    fontFamily: 'Merriweather'
+    fontFamily: 'Merriweather',
+    textDecoration: 'none'
   }
 }
 
-export default function({ title, _embedded, ...props}){
+export default function({ title, _embedded, link, ...props}){
 
   /*const loopImages = (media_details) => {
     let images = [];
@@ -27,19 +31,7 @@ export default function({ title, _embedded, ...props}){
     return images;
   }*/
 
-  const getBestImage = (media_details) => {
-    let images = [];
-    Object.keys(media_details).forEach( sizeName => {
-      const retinaDevice = window.devicePixelRatio > 1;
-      if (retinaDevice && sizeName.indexOf('_retina')){
-        if(media_details[sizeName].width/2 <= document.documentElement.clientWidth) images.push({sizeName, ...media_details[sizeName]});
-      }
-      if (!retinaDevice && !sizeName.indexOf('_retina')){
-        if(media_details[sizeName].width <= document.documentElement.clientWidth) images.push({sizeName, ...media_details[sizeName]});
-      }
-    });
-    return images.sort((a, b) => b.width - a.width)[0].source_url || "";
-  }
+  
 
   return(
     <div>
@@ -50,7 +42,9 @@ export default function({ title, _embedded, ...props}){
           alt={_embedded["wp:featuredmedia"]["0"].title.rendered} />
       </div>
       <div style={styles.title_container}>
-        <h2 style={styles.post_title}>{title.rendered}</h2>
+        <Link style={styles.post_title} to={urlCleaner(link)}>
+          <h2 >{title.rendered}</h2>
+        </Link>
       </div>
     </div>
   )

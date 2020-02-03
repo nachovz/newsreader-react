@@ -1,6 +1,7 @@
 import Client from '@wp-headless/client';
 //import FetchTransport from '@wp-headless/transport-fetch';
-import dummy from './data/answer.json';
+import dummy from 'data/posts.json';
+import dummyPost from 'data/post.json';
 
 const isLocalhost = Boolean(
   window.location.hostname === 'localhost' ||
@@ -20,11 +21,14 @@ class OfflineClient {
   }
   
   get = () =>{
-    return dummy
+    return dummy;
   }
 
   param = () => {
+  }
 
+  slug = () =>{
+    return dummyPost;
   }
 }
 

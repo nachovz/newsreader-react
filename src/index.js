@@ -1,13 +1,13 @@
 import 'unfetch/polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import 'index.css';
+import MainRouter from 'router';
+import * as serviceWorker from 'serviceWorker';
 import 'normalize.css';
-import './fonts/Merriweather-Regular.ttf';
+import 'fonts/Merriweather-Regular.ttf';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<MainRouter />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
