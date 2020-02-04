@@ -1,13 +1,34 @@
 import React, { useEffect, useState } from 'react';
-import ReactHtmlParser from 'react-html-parser';
 import client from 'client';
 import {
   useParams
 } from "react-router-dom";
 import getBestImage from 'utils/getBestImage';
+import tagCleaner from 'utils/tagCleaner';
+import { SPACING, DEVICE_WIDTH } from 'styles/constants';
+
+const styles = {
+  paddedContent:{
+    color: '#060606',
+    marginLeft: '20px',
+    marginRight: '20px',
+    width: 'calc(100% - 40px)',
+    maxWidth: '600px',
+    fontSize: '1.125rem'
+  },
+  figure: {
+    marginTop: 20,
+    marginBottom: 20
+  },
+  figcaption: {
+    padding: '8px 20px 0 20px',
+    fontStyle: 'italic',
+    color: '#333'
+  }
+};
 
 export default function Post() {
-  let { cat, slug} = useParams();
+  let { slug} = useParams();
   const [ post, setPost] = useState(null);
 
   useEffect(() => {
@@ -25,20 +46,24 @@ export default function Post() {
   console.log(post);
   const {
     title,
-    excerpt,
     content,
     _embedded
-  } = post[0];
+  } = post;
   return (
-    <div>
-      <h1>{title.rendered}</h1>
-      <i>{cat}</i>
-      <img 
+    <article>
+      <header style={styles.paddedContent}>
+        <h1>{tagCleaner(title.rendered)}</h1>
+      </header>
+      <figure style={styles.figure}>
+        <img 
         src={getBestImage(_embedded["wp:featuredmedia"]["0"].media_details.sizes)} 
-        width={document.documentElement.clientWidth} 
+        width={DEVICE_WIDTH} 
         alt={_embedded["wp:featuredmedia"]["0"].title.rendered} />
-      <p>{ReactHtmlParser(excerpt.rendered)}</p>
-      <p>{ReactHtmlParser(content.rendered)}</p>
-    </div>
+        <figcaption style={styles.figcaption}>{_embedded["wp:featuredmedia"]["0"].title.rendered}</figcaption>
+      </figure>
+      <main>
+        {tagCleaner(content.rendered)}
+      </main>
+    </article>
   );
 }

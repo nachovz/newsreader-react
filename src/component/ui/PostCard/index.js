@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ReactHtmlParser from 'react-html-parser';
 import urlCleaner from 'utils/urlCleaner';
 import getBestImage from 'utils/getBestImage';
 
@@ -9,10 +10,6 @@ const styles = {
   },
   title_container:{
     padding: 8
-  },
-  post_title:{
-    fontFamily: 'Merriweather',
-    textDecoration: 'none'
   }
 }
 
@@ -35,17 +32,17 @@ export default function({ title, _embedded, link, ...props}){
 
   return(
     <div>
-      <div style={styles.imagesContainer}>
-        <img 
-          src={getBestImage(_embedded["wp:featuredmedia"]["0"].media_details.sizes)} 
-          width={document.documentElement.clientWidth} 
-          alt={_embedded["wp:featuredmedia"]["0"].title.rendered} />
-      </div>
-      <div style={styles.title_container}>
-        <Link style={styles.post_title} to={urlCleaner(link)}>
-          <h2 >{title.rendered}</h2>
-        </Link>
-      </div>
+      <Link to={urlCleaner(link)}>
+        <div style={styles.imagesContainer}>
+          <img 
+            src={getBestImage(_embedded["wp:featuredmedia"]["0"].media_details.sizes)} 
+            width={document.documentElement.clientWidth} 
+            alt={_embedded["wp:featuredmedia"]["0"].title.rendered} />
+        </div>
+        <div style={styles.title_container}>
+          <h2>{ReactHtmlParser(title.rendered)}</h2>
+        </div>
+      </Link>
     </div>
   )
 }
