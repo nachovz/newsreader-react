@@ -2,6 +2,12 @@ import React from 'react';
 import client from 'client';
 import PostCard from 'component/ui/PostCard';
 
+const styles = {
+  main_container: {
+    background: '#e4e4e4'
+  }
+}
+
 export default class Home extends React.Component {
   state = {
     posts: []
@@ -16,11 +22,16 @@ export default class Home extends React.Component {
   render() {
     const { posts } = this.state;
     return (
-      <div>
+      <div style={styles.main_container}>
         {posts.map((post, ind) => {
           console.log(post);
           return(
-            <PostCard key={ind} {...post} />
+            <React.Fragment>
+              <PostCard key={ind} noImage={ind % 3} margin={(ind+1) % 3 === 0} {...post} />
+              {(ind+1) % 3 === 0 &&
+                <div>Publicidad</div>
+              }
+            </React.Fragment>
           )
         })}
       </div>

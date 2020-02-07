@@ -59,19 +59,22 @@ code {
 @font-face {
   font-family: 'Merriweather';
   src: local('Merriweather'), url(./fonts/Merriweather-Regular.ttf) format('truetype');
+  font-display: swap;
 }
 @font-face {
   font-family: 'Charter';
   src: local('Charter'), url(./fonts/Charter-Regular.ttf) format('truetype');
+  font-display: swap;
 }
 
 h1, h2 {
   font-family: 'Merriweather';
-  color: inherit
+  color: inherit;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
 h1{
   font-size: 3em;
-  margin-bottom: 5px;
   letter-spacing: .05em
 }
 h2{

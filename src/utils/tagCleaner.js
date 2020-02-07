@@ -1,5 +1,5 @@
 import ReactHtmlParser from 'react-html-parser';
-import { DEVICE_WIDTH, TEXT_SPACING } from 'styles/constants';
+import { DEVICE_WIDTH } from 'styles/constants';
 
 export default (ren) => 
   ReactHtmlParser(ren.replace(/style="text-align: justify;"/g, '')

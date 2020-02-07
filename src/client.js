@@ -32,7 +32,7 @@ class OfflineClient {
   }
 }
 
-export default  new Client('https://www.elnacional.com/wp-json');
+export default isLocalhost ? new OfflineClient() : new Client('https://www.elnacional.com/wp-json');
 /*
 export default new Client({
   transport: new FetchTransport(),

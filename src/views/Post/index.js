@@ -5,7 +5,7 @@ import {
 } from "react-router-dom";
 import getBestImage from 'utils/getBestImage';
 import tagCleaner from 'utils/tagCleaner';
-import { SPACING, DEVICE_WIDTH } from 'styles/constants';
+import { DEVICE_WIDTH } from 'styles/constants';
 
 const styles = {
   paddedContent:{
