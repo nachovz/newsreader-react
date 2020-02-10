@@ -1,6 +1,8 @@
 import React from 'react';
 import client from 'client';
 import PostCard from 'component/ui/PostCard';
+import AdUnit from 'component/ui/AdUnit';
+import { AD_BOX, AD_BANNER } from 'data/constants';
 
 const styles = {
   main_container: {
@@ -29,7 +31,7 @@ export default class Home extends React.Component {
             <React.Fragment>
               <PostCard key={ind} noImage={ind % 3} margin={(ind+1) % 3 === 0} {...post} />
               {(ind+1) % 3 === 0 &&
-                <div>Publicidad</div>
+                <AdUnit type={ind % 2 === 0 ? AD_BOX: AD_BANNER }/>
               }
             </React.Fragment>
           )
