@@ -1,5 +1,6 @@
 import React from 'react';
 import { AD_BOX, AD_BANNER } from 'data/constants';
+import { BORDER_STYLE, COLORS } from 'styles/constants';
 
 const styles={
   unit_container: {
@@ -10,7 +11,7 @@ const styles={
   },
   unit_block:{
     margin: '0 auto',
-    border: '1px solid #989898',
+    border: BORDER_STYLE,
   },
   [AD_BOX]:{
     width: 300,
@@ -23,7 +24,7 @@ const styles={
   unit_default_text:{
     lineHeight: '35px',
     fontStyle: 'italic',
-    color: '#989898'
+    color: COLORS.border
   }
 }
 

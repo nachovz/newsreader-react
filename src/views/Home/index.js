@@ -3,10 +3,11 @@ import client from 'client';
 import PostCard from 'component/ui/PostCard';
 import AdUnit from 'component/ui/AdUnit';
 import { AD_BOX, AD_BANNER } from 'data/constants';
+import { COLORS } from 'styles/constants';
 
 const styles = {
   main_container: {
-    background: '#e4e4e4'
+    background: COLORS.dark_background
   }
 }
 

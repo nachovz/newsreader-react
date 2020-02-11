@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import SlidingMenu from 'component/ui/SlidingMenu';
 import HamburgerMenu from 'react-hamburger-menu';
 import { logoSize } from 'images';
-import { HEADER_HEIGHT, SPACING } from 'styles/constants';
+import { HEADER_HEIGHT, SPACING, BORDER_STYLE } from 'styles/constants';
 
 const styles = {
   header:{
@@ -15,7 +15,7 @@ const styles = {
     padding: SPACING,
     overflow: 'hidden',
     background: 'white',
-    borderBottom: '1px solid #ccc'
+    borderBottom: BORDER_STYLE
   },
   header_logo: {
     flexGrow: 2,

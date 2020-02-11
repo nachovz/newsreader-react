@@ -107,3 +107,22 @@ main p {
   max-width: 600px; 
   font-size: 1.125rem;
 }
+main h2 {
+  margin: 10px 20px;
+}
+main ul{
+  padding:10px;
+  background: #f1f1f1;
+}
+main ul li {
+  margin: 10px 20px;
+  text-decoration: underline;
+}
+main ul:before {
+    content: " Sigue leyendo: ";
+    display: block;
+    margin: 10px 20px;
+}
+main iframe{
+  margin-bottom: 20px;
+}

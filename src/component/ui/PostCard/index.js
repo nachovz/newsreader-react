@@ -4,7 +4,7 @@ import tagCleaner from 'utils/tagCleaner';
 import urlCleaner from 'utils/urlCleaner';
 import getBestImage from 'utils/getBestImage';
 import dateAgoToText from 'utils/dateAgoToText';
-import { TEXT_SPACING, SPACING } from 'styles/constants';
+import { TEXT_SPACING, SPACING, BORDER_STYLE } from 'styles/constants';
 
 const styles = {
   post_container:{
@@ -25,7 +25,7 @@ const styles = {
     fontStyle: 'italic',
     color: '#333',
     paddingBottom: SPACING,
-    borderBottom: '1px solid #e4e4e4'
+    borderBottom: BORDER_STYLE
   },
   margin_bottom:{
     marginBottom: SPACING*2
