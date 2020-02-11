@@ -1,13 +1,15 @@
 import React from 'react';
 import { AD_BOX, AD_BANNER } from 'data/constants';
-import { BORDER_STYLE, COLORS } from 'styles/constants';
+import { BORDER_STYLE, COLORS, TEXT_SPACING } from 'styles/constants';
 
 const styles={
   unit_container: {
     width: '100%',
     height: '100%',
     textAlign: 'center',
-    margin: '20px 0 40px 0'
+    margin: `${TEXT_SPACING}px 0 ${TEXT_SPACING*2}px 0`,
+    padding: `${TEXT_SPACING*2}px 0`,
+    background: COLORS.dark_background
   },
   unit_block:{
     margin: '0 auto',

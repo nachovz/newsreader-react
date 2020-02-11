@@ -3,13 +3,6 @@ import client from 'client';
 import PostCard from 'component/ui/PostCard';
 import AdUnit from 'component/ui/AdUnit';
 import { AD_BOX, AD_BANNER } from 'data/constants';
-import { COLORS } from 'styles/constants';
-
-const styles = {
-  main_container: {
-    background: COLORS.dark_background
-  }
-}
 
 export default class Home extends React.Component {
   state = {
@@ -25,12 +18,12 @@ export default class Home extends React.Component {
   render() {
     const { posts } = this.state;
     return (
-      <div style={styles.main_container}>
+      <div>
         {posts.map((post, ind) => {
           console.log(post);
           return(
-            <React.Fragment>
-              <PostCard key={ind} noImage={ind % 3} margin={(ind+1) % 3 === 0} {...post} />
+            <React.Fragment key={ind}>
+              <PostCard noImage={ind % 3} margin={(ind+1) % 3 === 0} {...post} />
               {(ind+1) % 3 === 0 &&
                 <AdUnit type={ind % 2 === 0 ? AD_BOX: AD_BANNER }/>
               }

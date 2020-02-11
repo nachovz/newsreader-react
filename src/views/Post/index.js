@@ -5,30 +5,31 @@ import {
 } from "react-router-dom";
 import getBestImage from 'utils/getBestImage';
 import tagCleaner from 'utils/tagCleaner';
-import { DEVICE_WIDTH } from 'styles/constants';
+import { DEVICE_WIDTH, TEXT_SPACING, COLORS } from 'styles/constants';
 
 const styles = {
   paddedContent:{
-    color: '#060606',
+    color: COLORS.text,
     marginLeft: '20px',
     marginRight: '20px',
-    width: 'calc(100% - 40px)',
+    width: `calc(100% - ${TEXT_SPACING*2}px)`,
     maxWidth: '600px',
-    fontSize: '1.125rem'
+    fontSize: '1.125rem',
+    paddingTop: TEXT_SPACING
   },
   figure: {
-    marginTop: 20,
-    marginBottom: 20
+    marginTop: TEXT_SPACING,
+    marginBottom: TEXT_SPACING
   },
   figcaption: {
-    padding: '8px 20px 0 20px',
+    padding: `8px ${TEXT_SPACING}px 0 ${TEXT_SPACING}px`,
     fontStyle: 'italic',
-    color: '#333'
+    color: COLORS.light_text
   }
 };
 
 export default function Post() {
-  let { slug} = useParams();
+  let { slug } = useParams();
   const [ post, setPost] = useState(null);
 
   useEffect(() => {
@@ -62,7 +63,7 @@ export default function Post() {
         <figcaption style={styles.figcaption}>{_embedded["wp:featuredmedia"]["0"].title.rendered}</figcaption>
       </figure>
       <main>
-        {tagCleaner(content.rendered)}
+        {tagCleaner(content.rendered, 'content')}
       </main>
     </article>
   );

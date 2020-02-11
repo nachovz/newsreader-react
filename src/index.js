@@ -1,11 +1,11 @@
 import 'unfetch/polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import 'index.css';
 import MainRouter from 'router';
 import * as serviceWorker from 'serviceWorker';
 import 'normalize.css';
 import 'fonts/Merriweather-Regular.ttf';
+import 'styles/index.css';
 
 ReactDOM.render(<MainRouter />, document.getElementById('root'));
 

@@ -33,7 +33,7 @@ export default function (){
   return(
     <div style={styles.header}>
       <div style={styles.header_extras}>
-        <HamburgerMenu isOpen={opened} menuClicked={() => setOpened(true)} />
+        <HamburgerMenu isOpen={opened} menuClicked={() => setOpened(!opened)} />
       </div>
       <div style={styles.header_logo}>
         <img src={logoSize()} height={HEADER_HEIGHT} alt="Logo El Nacional Venezuela"/>

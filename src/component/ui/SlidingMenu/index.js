@@ -1,17 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { COLORS, TEXT_SPACING, HEADER_CALC } from 'styles/constants';
 
 const styles = {
   flyoutMenu: {
-    width: '100vw',
-    height: '100vh',
-    backgroundColor: '#FFE600',
+    width: `calc(100% - ${TEXT_SPACING*2}px)`,
+    height: `calc(100vh - ${HEADER_CALC}px)`,
+    backgroundColor: COLORS.background,
     position: 'fixed',
-    top: 0,
+    top: HEADER_CALC,
     left: 0,
     transition: 'transform .3s cubic-bezier(0, .52, 0, 1)',
     overflow: 'scroll',
     zIndex: 1000,
+    padding: TEXT_SPACING
   },
   hide: {
     transform: 'translate3d(-100vw, 0, 0)',
@@ -21,19 +23,20 @@ const styles = {
     overflow: 'hidden',
   },
   links: {
-    color: '#333',
+    color: COLORS.primary,
     marginLeft: 15,
     textDecoration: 'none',
     "&:hover": {
       textDecoration: 'underline',
-    }
+    },
+    textTransform: 'uppercase'
   }
 };
 
 export default function({opened, handleMouseDown}){
   return(
     <div
-      onMouseDown={handleMouseDown} 
+      onMouseDown={handleMouseDown}
       style={{...styles.flyoutMenu, ...opened ? styles.show : styles.hide} }>
       <h2><Link to="/" style={styles.links}>Home</Link></h2>
       <h2><a style={styles.links} href="https://www.elnacional.com">About</a></h2>
