@@ -4,7 +4,8 @@ import ReactDOM from 'react-dom';
 import MainRouter from 'router';
 import * as serviceWorker from 'serviceWorker';
 import 'normalize.css';
-import 'fonts/Merriweather-Regular.ttf';
+import 'styles/fonts/Merriweather-Regular.ttf';
+import 'styles/fonts/Charter-Regular.ttf';
 import 'styles/index.css';
 
 ReactDOM.render(<MainRouter />, document.getElementById('root'));

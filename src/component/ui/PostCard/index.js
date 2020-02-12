@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Skeleton from 'react-loading-skeleton';
 import tagCleaner from 'utils/tagCleaner';
 import urlCleaner from 'utils/urlCleaner';
 import getBestImage from 'utils/getBestImage';
@@ -35,7 +36,7 @@ const styles = {
 export default function({ title, _embedded, link, excerpt, date_gmt, noImage=false, margin=false }){
   return(
     <article style={styles.post_container}>
-      {!noImage &&
+      {!!_embedded ? !noImage &&
         <div style={styles.imagesContainer}>
           <Link to={urlCleaner(link)}>
             <img 
@@ -44,15 +45,30 @@ export default function({ title, _embedded, link, excerpt, date_gmt, noImage=fal
               alt={_embedded["wp:featuredmedia"]["0"].title.rendered} />
           </Link>
         </div>
+        :
+        <Skeleton height={200} />
       }
       <div style={{...styles.title_container, ...margin ? styles.margin_bottom : {}}}>
-        <Link to={urlCleaner(link)}>
-          <h2 style={noImage ? styles.title_smaller : {}}>{tagCleaner(title.rendered)}</h2>
-          <div>{tagCleaner(excerpt.rendered)}</div>
-        </Link>
-        <div style={styles.date_container}>
-          <span>{dateAgoToText(new Date(date_gmt+'Z'))}</span>
-        </div>
+        {!!link && !!title && !!excerpt && !!date_gmt ? 
+          <React.Fragment>
+            <Link to={urlCleaner(link)}>
+              <h2 style={noImage ? styles.title_smaller : {}}>
+                {tagCleaner(title.rendered)}
+              </h2>
+              <div>{tagCleaner(excerpt.rendered)}</div>
+            </Link>
+            <div style={styles.date_container}>
+              <span>{dateAgoToText(new Date(date_gmt+'Z'))}</span>
+            </div>
+          </React.Fragment>
+        :
+          <React.Fragment>
+            <h2>
+              <Skeleton count={2}/>
+            </h2>
+            <Skeleton count={4} />
+          </React.Fragment>
+        }
       </div>
     </article>
   )

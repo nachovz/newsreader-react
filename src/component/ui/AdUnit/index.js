@@ -7,9 +7,9 @@ const styles={
     width: '100%',
     height: '100%',
     textAlign: 'center',
-    margin: `${TEXT_SPACING}px 0 ${TEXT_SPACING*2}px 0`,
+    margin: `${TEXT_SPACING}px 0 ${TEXT_SPACING}px 0`,
     padding: `${TEXT_SPACING*2}px 0`,
-    background: COLORS.dark_background
+    background: COLORS.background_dark
   },
   unit_block:{
     margin: '0 auto',

@@ -5,11 +5,12 @@ export const TEXT_SPACING = 20;
 export const DEVICE_WIDTH = document.documentElement.clientWidth;
 export const COLORS = {
   text: '#060606',
-  light_text:'#333333',
+  text_light:'#333333',
+  text_contrast: '#ffffff', 
   primary: '#011689',
   border: '#dcdcdc',
   background: '#ffffff',
-  dark_background: '#f3f3f3',
-
+  background_dark: '#f3f3f3',
+  background_darkest: '#0d0d0d'
 }
 export const BORDER_STYLE = `1px solid ${COLORS.border}`;
