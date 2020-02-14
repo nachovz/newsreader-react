@@ -79,7 +79,8 @@ h1{
 }
 h2{
   font-size: 1.5em;
-  line-height: 1.1em;
+  line-height: 1.3em;
+  letter-spacing: .03em;
 }
 a {
    text-decoration: none;

@@ -21,7 +21,7 @@ export default function MainRouter() {
       <Header />
       <div style={{ paddingTop: HEADER_HEIGHT + (SPACING*2) }}>
         <Switch>
-          <Route path="/:cat/:slug">
+          <Route path="/:slug">
             <PostView />
           </Route>
           <Route path="/">

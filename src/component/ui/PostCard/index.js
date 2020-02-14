@@ -2,10 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Skeleton from 'react-loading-skeleton';
 import tagCleaner from 'utils/tagCleaner';
-import urlCleaner from 'utils/urlCleaner';
+import { urlCleaner } from 'utils/urlUtil';
 import getBestImage from 'utils/getBestImage';
 import dateAgoToText from 'utils/dateAgoToText';
-import { TEXT_SPACING, SPACING, BORDER_STYLE } from 'styles/constants';
+import { TEXT_SPACING, SPACING, BORDER_STYLE, COLORS } from 'styles/constants';
 
 const styles = {
   post_container:{
@@ -24,7 +24,7 @@ const styles = {
     width: '100%',
     textAlign: 'right',
     fontStyle: 'italic',
-    color: '#333',
+    color: COLORS.text_light,
     paddingBottom: SPACING,
     borderBottom: BORDER_STYLE
   },
@@ -33,10 +33,18 @@ const styles = {
   }
 }
 
-export default function({ title, _embedded, link, excerpt, date_gmt, noImage=false, margin=false }){
+export default function({ 
+  title, 
+  _embedded, 
+  link, 
+  excerpt, 
+  date_gmt, 
+  noImage=false, 
+  margin=false
+}){
   return(
     <article style={styles.post_container}>
-      {!!_embedded ? !noImage &&
+      {!!_embedded ? !noImage && !!_embedded["wp:featuredmedia"]["0"].media_details && !!link &&
         <div style={styles.imagesContainer}>
           <Link to={urlCleaner(link)}>
             <img 
@@ -66,7 +74,12 @@ export default function({ title, _embedded, link, excerpt, date_gmt, noImage=fal
             <h2>
               <Skeleton count={2}/>
             </h2>
-            <Skeleton count={4} />
+            <p>
+              <Skeleton />
+              <Skeleton />
+              <Skeleton />
+              <Skeleton />
+            </p>
           </React.Fragment>
         }
       </div>

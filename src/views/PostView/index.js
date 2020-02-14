@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import client from 'client';
-import { useParams } from 'react-router-dom';
-import { useScrollPosition } from '@n8tb1t/use-scroll-position'
+import { useLocation } from 'react-router-dom';
+import { useScrollPosition } from '@n8tb1t/use-scroll-position';
+import { slugFinder } from 'utils/urlUtil';
 import Post from 'component/ui/Post';
 import KeepReading from 'component/ui/KeepReading';
 
 export default function PostView() {
-  let { slug } = useParams();
+  let location = useLocation()
   const [ posts, setPosts] = useState([]);
   const [ loadingMore, setLoadingMore ] = useState(true);
 
   const fetchPost = async () => {
     client.param('_embed', true);
-    const post = await client.posts().slug(slug);
+    const post = await client.posts().slug(slugFinder(location));
     return post;
   }
 
@@ -25,7 +26,7 @@ export default function PostView() {
     }
   });
 
-  useScrollPosition(({ prevPos, currPos }) => {
+  useScrollPosition(({ currPos }) => {
     console.log((currPos.y*-1) > document.documentElement.scrollHeight - (window.innerHeight*1.5))
     if((currPos.y*-1) > document.documentElement.scrollHeight - (window.innerHeight*1.5)){
       setLoadingMore(true);
@@ -38,8 +39,8 @@ export default function PostView() {
 
   return (
     <React.Fragment>
-      {posts.map((post, ind, arr)=> <Post key={ind} {...post}/>)}
-      <KeepReading />
+      {posts.map((post, ind)=> <Post key={ind} {...post}/>)}
+      {posts.length > 0 && <KeepReading />}
       {loadingMore && <Post />}
     </React.Fragment>
   );

@@ -52,7 +52,9 @@ export default ({ title, content, _embedded }) => {
             src={getBestImage(_embedded["wp:featuredmedia"]["0"].media_details.sizes)} 
             width={DEVICE_WIDTH} 
             alt={_embedded["wp:featuredmedia"]["0"].title.rendered} />
-            <figcaption style={styles.figcaption}>{_embedded["wp:featuredmedia"]["0"].title.rendered}</figcaption>
+            <figcaption style={styles.figcaption}>
+              {tagCleaner(_embedded["wp:featuredmedia"]["0"].title.rendered)}
+            </figcaption>
         </figure>
         :
         <Skeleton height={200} />
@@ -78,7 +80,7 @@ export default ({ title, content, _embedded }) => {
   );
 }
 
-const SkeletonBlock = (type='content') =>{
+const SkeletonBlock = () =>{
   return(
     <React.Fragment>
       <Skeleton width={DEVICE_WIDTH-40} />
