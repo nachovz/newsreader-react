@@ -32,5 +32,21 @@ export const MAP_ID = {
   'venezuela': {
     type: 'categories',
     value: 290
+  },
+  'economia': {
+    type: 'categories',
+    value: 33
+  },
+  'ciencia-tecnologia': {
+    type: 'categories',
+    value: 295
+  },
+  'opinion': {
+    type: 'categories',
+    value: 38
+  },
+  'life-style	': {
+    type: 'categories',
+    value: 308
   }
 }

@@ -60,7 +60,7 @@ const menuElements = [
     tag: 'OPINIÓN'
   },        
   {
-    value: 'lifestyle',
+    value: 'life-style',
     tag: 'ESTILO DE VIDA'
   }
 ];
@@ -91,6 +91,7 @@ export default function() {
   });
   const [ viewState, setViewState ] = useState('ultima-hora')
   const [ loadingMore, setLoadingMore] = useState(true); 
+  console.log(viewState)
 
   useEffect(() => {
     //if(state.posts.length === 0){
@@ -107,7 +108,7 @@ export default function() {
     console.log((currPos.y*-1) > document.documentElement.scrollHeight - (window.innerHeight*1.5))
     if((currPos.y*-1) > document.documentElement.scrollHeight - (window.innerHeight*1.5)){
       setLoadingMore(true);
-      fetchPosts(state.page, state.filter).then((posts) => {
+      fetchPosts(state.page+10, [viewState]).then((posts) => {
         setState({ ...state, page: state.page+10, posts: [...state.posts,...posts]});
         setLoadingMore(false);
       });
@@ -122,8 +123,9 @@ export default function() {
             key={ind} 
             className={elem.value === viewState ? 'active':''}
             onClick={() => {
-              setViewState(elem.value)
+              setViewState(elem.value);
               setLoadingMore(true);
+              window.scrollTo(0, 0);
               setState(s => ({...s, posts: []}))
             }}
           >
@@ -133,7 +135,6 @@ export default function() {
         &nbsp;
       </div>
       {state.posts.map((post, ind) => {
-        
         return(
           <React.Fragment key={ind}>
             <PostCard noImage={ind % 3} margin={(ind+1) % 3 === 0} {...post} />
