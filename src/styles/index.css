@@ -134,8 +134,8 @@ main iframe{
   font-weight: bold;
   letter-spacing: 0.05em;
   font-size: 0.8em;
-  height: 100%;
-  line-height: 50px;
+  height: 52px;
+  line-height: 55px;
   padding: 0 10px;
 }
 #nav_menu > span.active{

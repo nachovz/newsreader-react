@@ -23,6 +23,9 @@ const styles = {
   },
   default_container: {
     minHeight: '100vh'
+  },
+  article_wrapper: {
+    paddingTop: 50
   }
 };
 
@@ -134,21 +137,23 @@ export default function() {
         ))}
         &nbsp;
       </div>
-      {state.posts.map((post, ind) => {
-        return(
-          <React.Fragment key={ind}>
-            <PostCard noImage={ind % 3} margin={(ind+1) % 3 === 0} {...post} />
-            {(ind+1) % 3 === 0 &&
-              <AdUnit type={ind % 2 === 0 ? AD_BOX: AD_BANNER }/>
-            }
-          </React.Fragment>
-        )
-      })}
-      {loadingMore && 
-      <div style={styles.default_container}>
-        <PostCard />
-        <PostCard />
-      </div>}
+      <div style={styles.article_wrapper}>
+        {state.posts.map((post, ind) => {
+          return(
+            <React.Fragment key={ind}>
+              <PostCard noImage={ind % 3} margin={(ind+1) % 3 === 0} {...post} />
+              {(ind+1) % 3 === 0 &&
+                <AdUnit type={ind % 2 === 0 ? AD_BOX: AD_BANNER }/>
+              }
+            </React.Fragment>
+          )
+        })}
+        {loadingMore && 
+        <div style={styles.default_container}>
+          <PostCard />
+          <PostCard />
+        </div>}
+      </div>
     </div>
   );
 };
